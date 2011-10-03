@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby -rsocket
+d,s,m=Object.method(:define_method),TCPServer.new(h='0.0.0.0',p=9292);d[:use,&->_{m=_}];d[:run,&->_{_=m ?m.new(_):_;
+loop{i,(a,b,c)=s.accept,_.call({});i.puts("HTTP/1.1 #{a} OK",*b.map{|k,v|"#{k}: #{v}"},'',c)||i.close;puts'>> "GET'+
+' /" - OK %f'% [rand/321]}}];`open http://localhost:9292`;puts">> Listening on #{h}:#{p}";load(ARGV[0]||'config.ru')
